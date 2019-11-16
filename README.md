@@ -10,3 +10,5 @@ Build a card reading machine that takes multiple cards and pays bills. So in a c
 Detecting fraud over phone calls
 
 Weekly prediction of how much you're going to spend, text it to the user. So given the CSV file, work out how much you're going to spend. Make a chatbot with twilio? 
+
+Make a full banking chatbot that repsonds in memes
