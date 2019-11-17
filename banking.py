@@ -6,6 +6,20 @@ import json
 
 # get request from local server
 
+def text(bot_message):
+    bot_token = 
+    bot_chatID = '1050648487'
+    send_text = 'https://api.telegram.org/bot' + bot_token + '/sendMessage?chat_id=' + bot_chatID + '&parse_mode=Markdown&text=' + bot_message
+    print(send_text)
+
+    response = requests.get(send_text)
+
+    return None
+
+
+def get_url():
+    url = requests.request("GET", "http://api.giphy.com/v1/gifs/random", params={"api_key":"pgHiOtZymIiPTrEgdYWqqYav1eSjOIgR","rating":"PG-13", "tag": "funny"}).json()
+    return url['data']['images']['original']['url']
 
 def get_balance(id):
     req = requests.get("https://api-sandbox.starlingbank.com/api/v2/accounts/" + id + "/balance",
@@ -50,11 +64,15 @@ def assess_last_transaction(id, cat, last):
 
 
 
+
 uid = '62f3071c-7e72-423a-9dcc-72870b5b8f89'
 category = "6ffaa2d3-eb66-4050-9f3e-91a3b7c1f310"
 print(get_balance(uid))
 last = get_last_transaction_from_feed(uid, category)
 verdict = assess_last_transaction(uid, category, last)
+
+
+
 while True:
     new_last = get_last_transaction_from_feed(uid, category)
     if new_last == last:
@@ -63,4 +81,7 @@ while True:
         last = get_last_transaction_from_feed(uid, category)
         verdict = assess_last_transaction(uid, category, last)
         print(verdict)
-        #####MEMEAGE
+        text(str(verdict))
+        print("****SENDING VERDICT")
+        x = get_url()
+        text(x)
