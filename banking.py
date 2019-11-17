@@ -10,7 +10,7 @@ def text(bot_message):
     bot_token = telegramToken.token
     bot_chatID = '1050648487'
     send_text = 'https://api.telegram.org/bot' + bot_token + '/sendMessage?chat_id=' + bot_chatID + '&parse_mode=Markdown&text=' + bot_message
-    print(send_text)
+    #print(send_text)
 
     response = requests.get(send_text)
 
